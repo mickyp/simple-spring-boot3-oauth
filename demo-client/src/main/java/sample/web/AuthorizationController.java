@@ -50,7 +50,7 @@ public class AuthorizationController {
 
 	@GetMapping(value = "/authorize", params = "grant_type=authorization_code")
 	public String authorizationCodeGrant(Model model,
-			@RegisteredOAuth2AuthorizedClient("messaging-client-authorization-code")
+			@RegisteredOAuth2AuthorizedClient("client-auth-code-demo")
 					OAuth2AuthorizedClient authorizedClient) {
 
 		String[] messages = this.webClient
@@ -80,6 +80,21 @@ public class AuthorizationController {
 
 		return "index";
 	}
+
+	// @GetMapping(value = "/authorized")
+	// public String authorized(Model model, HttpServletRequest request) {
+	// 	// String errorCode = request.getParameter(OAuth2ParameterNames.ERROR);
+	// 	// if (StringUtils.hasText(errorCode)) {
+	// 	// 	model.addAttribute("error",
+	// 	// 			new OAuth2Error(
+	// 	// 					errorCode,
+	// 	// 					request.getParameter(OAuth2ParameterNames.ERROR_DESCRIPTION),
+	// 	// 					request.getParameter(OAuth2ParameterNames.ERROR_URI))
+	// 	// 	);
+	// 	// }
+
+	// 	return "index";
+	// }
 
 
 	@ExceptionHandler(WebClientResponseException.class)
