@@ -91,25 +91,25 @@ public class AuthorizationServerConfig {
 		 * endpoints and employ any additional protections as needed, which is
 		 * outside the scope of this sample.
 		 */
-		DeviceClientAuthenticationConverter deviceClientAuthenticationConverter =
-				new DeviceClientAuthenticationConverter(
-						authorizationServerSettings.getDeviceAuthorizationEndpoint());
-		DeviceClientAuthenticationProvider deviceClientAuthenticationProvider =
-				new DeviceClientAuthenticationProvider(registeredClientRepository);
-
+		// DeviceClientAuthenticationConverter deviceClientAuthenticationConverter =
+		// 		new DeviceClientAuthenticationConverter(
+		// 				authorizationServerSettings.getDeviceAuthorizationEndpoint());
+		// DeviceClientAuthenticationProvider deviceClientAuthenticationProvider =
+		// 		new DeviceClientAuthenticationProvider(registeredClientRepository);
+		
 		// @formatter:off
 		http.getConfigurer(OAuth2AuthorizationServerConfigurer.class)
-			.deviceAuthorizationEndpoint(deviceAuthorizationEndpoint ->
-				deviceAuthorizationEndpoint.verificationUri("/activate")
-			)
-			.deviceVerificationEndpoint(deviceVerificationEndpoint ->
-				deviceVerificationEndpoint.consentPage(CUSTOM_CONSENT_PAGE_URI)
-			)
-			.clientAuthentication(clientAuthentication ->
-				clientAuthentication
-					.authenticationConverter(deviceClientAuthenticationConverter)
-					.authenticationProvider(deviceClientAuthenticationProvider)
-			)
+			// .deviceAuthorizationEndpoint(deviceAuthorizationEndpoint ->
+			// 	deviceAuthorizationEndpoint.verificationUri("/activate")
+			// )
+			// .deviceVerificationEndpoint(deviceVerificationEndpoint ->
+			// 	deviceVerificationEndpoint.consentPage(CUSTOM_CONSENT_PAGE_URI)
+			// )
+			// .clientAuthentication(clientAuthentication ->
+			// 	clientAuthentication
+			// 		.authenticationConverter(deviceClientAuthenticationConverter)
+			// 		.authenticationProvider(deviceClientAuthenticationProvider)
+			// )
 			.authorizationEndpoint(authorizationEndpoint ->
 				authorizationEndpoint.consentPage(CUSTOM_CONSENT_PAGE_URI))
 			.oidc(Customizer.withDefaults());	// Enable OpenID Connect 1.0
@@ -139,7 +139,7 @@ public class AuthorizationServerConfig {
 				.authorizationGrantType(AuthorizationGrantType.CLIENT_CREDENTIALS)
 				.redirectUri("http://127.0.0.1:8080/login/oauth2/code/messaging-client-oidc")
 				.redirectUri("http://127.0.0.1:8080/authorized")
-				.postLogoutRedirectUri("http://127.0.0.1:8080/logged-out")
+				// .postLogoutRedirectUri("http://127.0.0.1:8080/logged-out")
 				.scope(OidcScopes.OPENID)
 				.scope(OidcScopes.PROFILE)
 				.scope("message.read")
