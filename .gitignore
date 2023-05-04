@@ -1,0 +1,6 @@
+sample
+.gradle/
+templates
+build/
+.idea/
+bin/
